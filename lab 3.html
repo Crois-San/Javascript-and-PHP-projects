@@ -1,0 +1,71 @@
+<HTML>
+<head>
+</head>
+<body>
+	<script type='text/javascript' language='Javascript'>
+		things={};
+		n=prompt("Введите количество объектов");
+		var w,h,d,c,m,f,p,v;
+		for(i=0;i<n;i++)
+		{			
+			things["thing"+(i+1)]={};
+		}
+		for(i=0;i<n;i++)
+		{
+			alert("Объект №"+(i+1));
+			w=prompt("Введите ширину");
+			h=prompt("Введите высоту");
+			d=prompt("Введите глубину");
+			
+			things["thing"+(i+1)].width=w;
+			things["thing"+(i+1)].height=h;
+			things["thing"+(i+1)].depth=d;
+			
+			for(j=0;j<3;j++)
+			{
+				p=prompt("Введите свойство");
+				v=prompt("Введите значение");
+				things["thing"+(i+1)][p]=v;
+			}
+		}
+		
+		things.copy={};
+		//for (i=1; i<n;i++)
+		//{
+		//	for( p in things["thing"+(i+1)])
+		//	{
+		//		if(p==things.thing1.p)
+		//		{
+		//		things.copy[p]=things.thing1[p];
+		//		}
+		//	}
+		//}
+		//for (p in things.copy)
+		//	alert(p);
+		things.copy.width = things.thing1.width;
+		things.copy.height = things.thing1.height;
+		things.copy.depth = things.thing1.depth;
+		
+		for(i=0;i<n;i++)
+		{
+			for (var p in things["thing"+(i+1)])
+			{
+				if(!isNaN(things["thing"+(i+1)][p]) )
+				{
+					things["thing"+(i+1)][p]*=2;
+					alert(p+ ": " +things["thing"+(i+1)][p]);
+				}
+			}
+			//things["thing"+(i+1)].width*=2;
+			//things["thing"+(i+1)].height*=2;
+			//things["thing"+(i+1)].depth*=2;
+			//alert("Объект №"+ (i+1)+": \n Ширина:"+ +things["thing"+(i+1)].width
+			//+ "\n Высота: " + things["thing"+(i+1)].height 
+			//+ "\n Глубина: " + things["thing"+(i+1)].depth);
+		}
+		
+		
+	</script>
+</body>
+
+</HTML>

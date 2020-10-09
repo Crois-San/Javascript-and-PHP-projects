@@ -1,0 +1,61 @@
+<HTML>
+<head>
+</head>
+<body id="screen">
+	<img id="cat" src="cat.png" style=
+	" position:absolute; left: 100 ; top: 100;"
+	>
+	<img id="tapok" src="tapok.png" style=
+	" position:absolute;"
+	>
+	Количество очков: <output id="pointCount">0</output>
+	<br>
+	Оставшееся время: <output id="timeCount">0</output>
+	
+	<script type="text/javascript">
+	let catX=0, catY=0;
+	let points=0;
+	let time= 100;
+	moveTap=function(e){
+		tapok.style.left=e.pageX;
+		tapok.style.top=e.pageY;
+	}
+	function getRandom(max,min)
+	{
+		return Math.random() * (max - min) + min;
+	}
+	randomCat =function()
+	{
+		catX = getRandom(1000,0);
+		catY = getRandom(600,0);
+		cat.style.left=catX;
+		cat.style.top=catY;
+	}
+	document.addEventListener('mousemove',moveTap);
+	randomCat();
+	setInterval(randomCat,1000);
+	setInterval(function(){
+		if(time>0)
+		{
+		time--;
+		timeCount.innerHTML=time;
+		}
+		else
+		{
+			alert("Игра закончена! Количество очков: " + points);
+			points=0;
+			pointCount.innerHTML=points;
+			time=100;
+		}
+	},500);
+	cat.onclick=function(){
+		points++;
+		pointCount.innerHTML=points;
+		
+	}
+	
+	
+	</script>
+</body>
+
+</HTML>

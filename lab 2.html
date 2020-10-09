@@ -1,0 +1,100 @@
+<html>
+<head>
+
+
+</head>
+<body>
+<script type="text/javascript">
+
+
+i=0;
+
+Survival();
+function Survival()
+{
+	var points=0;
+	var name;
+
+	name=prompt("Как вас зовут?");
+
+	points = points + shelter();
+	function shelter()
+	{
+		c = confirm("Оборудовали ли вы убежище на случай нашествия зомби?");
+		if(c==true)
+		{
+			c=confirm("Созданы в убежище запасы еды?");
+			if (c==true) 
+				i++;
+			c=confirm("Созданы в убежище запасы воды?");
+			if (c==true) 
+				i++;
+			c=confirm("Достаточно ли налажена система вентиляции?");
+			if (c==true) 
+				i++;
+		}
+		else {return 0;}
+		if (i>=2) {return 2;}
+	}
+
+	points = points + weapon();
+	function weapon(){
+		c = confirm("Есть ли у вас оружие?");
+		if(c==true){
+			c=confirm("Умеете ли вы им владеть?");
+			if (c==true) 
+				i++;
+			c=confirm("В наличии ли ремонтный комплект?");
+			if (c==true) 
+				i++;
+			c=confirm("Имеются ли запасы боеприпасов?");
+			if (c==true) 
+				i++;
+		}
+		else {return 0;}
+		if (i>=2 && c==true) {return 2;}
+	}
+
+	points = points + form();
+	function form()
+	{
+		a = prompt("В какой физической форме вы находитесь?(Варианты: отличное,удовлетворительное,дохляк)");
+		if(a=="отличное")
+			return 2;
+		else if (a=="удовлетворительное")
+			return 1;
+		else if (a=="дохляк")
+			return 0;
+		else
+		{
+			alert("Нет такого варианта, додик.");
+			return -1;
+		}
+	}
+
+	points = points + relatives();
+	function relatives()
+	{
+		alert("Пожертвуете ли близкими если:");
+		c = confirm("Их схватили зомби и начали ими завтракать?");
+		if (c==true)
+			i++;
+		c = confirm("Еды осталось мало и делиться не хочется?");
+		if (c==true)
+			i++;
+		c = confirm("Они собираются совершить самоубийство от отчаяния?");
+		if (c==true)
+			i++;
+		return i;
+	}
+
+
+	if (points>=6)
+		alert("Вы выжили " + name +", не на долго, к сожалению.");
+	else
+		Survival();
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<HTML>
+<head>
+</head>
+<body><!-- E:\РПМ лабы\1.jpg -->
+	<table width=1500 height=600 border=0  align='left' cellspacing='0' cellpadding=5 >
+		<tr>
+			<td height =50  width=50%>
+				<h4>Редактор JAVASCRIPT</h4>
+				<p>Введите в окно ниже код JAVASCRIPT и браузер выполнит его</p>
+				<textarea id="t1" cols="60" rows="30"></textarea>
+				<br><input type="button" id="b1" value="Выполнить">
+			</td>
+			<td height =50>
+				<iframe src="E:\РПМ лабы\1.png" name="frame1" width=100% height=500></iframe> <br>
+				Адрес: <input type="text" id="t2">
+				<input type="button" id="open1" value="Открыть"><br>
+				<input type="button" id="back1" value="Назад">
+				<input type="button" id="next1" value="Вперёд">
+			</td>
+		</tr>
+	
+	<script type="text/javascript">
+		b1.onclick=function(){
+			setTimeout(t1.value,150);
+		}
+		
+		
+		open1.onclick=function(){
+			window.frames.frame1.location = t2.value;
+		}		
+		back1.onclick=function(){
+			window.history.back();
+		}
+		next1.onclick=function(){
+			window.history.forward();
+		}
+	</script>
+</body>
+
+</HTML>

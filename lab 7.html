@@ -1,0 +1,79 @@
+<HTML>
+<head>
+</head>
+<body>
+	<img id="heart" src="heart.png" style=
+	"height: 400px; width: 400px; position:absolute; top: 150px; left: 540px"
+	>
+	<input id=adrenaline type=button value=адреналин>
+	<input id=defibrillator type=button value=разряд>
+	Ударов в минуту
+	<input id=hr type=text >
+	
+	<script type="text/javascript">
+	let inter1,inter2,interMain, interRate;
+	let heartRateTime=100;
+	let heartRate=90;
+	let isBeating=1;
+	hr.value=heartRate;
+		f1=function(){
+			inter1=setInterval(function(){
+				heart.style.width = parseInt(heart.style.width)+10+"px";
+				heart.style.height = parseInt(heart.style.height)+10+"px";
+				heart.style.left = parseInt(heart.style.left)-5+"px";
+				heart.style.top = parseInt(heart.style.top)-5+"px";
+			},heartRateTime);
+			setTimeout(function(){
+				clearInterval(inter1);
+				inter2=setInterval(function(){
+				heart.style.width = parseInt(heart.style.width)-10+"px";
+				heart.style.height = parseInt(heart.style.height)-10+"px";
+				heart.style.left = parseInt(heart.style.left)+5+"px";
+				heart.style.top = parseInt(heart.style.top)+5+"px";
+			},heartRateTime);
+			},heartRateTime*10);
+			
+			setTimeout(function(){clearInterval(inter2);},heartRateTime*20);
+			if(heartRate <= 30 || heartRate >= 160)
+			{
+				clearInterval(interMain);
+				clearInterval(interRate);
+				isBeating=0;
+			}
+		}
+		f2=function(){
+			heartRate--;
+			hr.value=heartRate;
+			heartRateTime+=1;
+		}
+		f1();
+		interMain=setInterval(f1,heartRateTime*20);
+		f2();
+		interRate=setInterval(f2,1000);
+		
+		adrenaline.onclick=function(){
+			heartRate+=30;
+			hr.value=heartRate;
+			heartRateTime-=30;
+		}
+		
+		
+		
+		
+		defibrillator.onclick=function(){
+			if(isBeating==0)
+			{
+				heartRate=90;
+				hr.value=heartRate;
+				heartRateTime=100;
+				f1();
+				interMain=setInterval(f1,heartRateTime*20);
+				f2();
+				interRate=setInterval(f2,5000);
+				isBeating=1;
+			}
+		}
+	</script>
+</body>
+
+</HTML>

@@ -1,0 +1,86 @@
+<HTML>
+<head>
+</head>
+<body>
+	<OL id='OL1'>
+	
+	</OL>
+	
+	<script type="text/javascript">
+		
+		nameEl=document.createElement('INPUT');
+		sEl=document.createElement('SELECT');
+		selectOption1=document.createElement('option');
+		selectOption1.innerHTML="Мужской";
+		selectOption2=document.createElement('option');
+		selectOption2.innerHTML="Женский";
+		emailEl=document.createElement('INPUT');
+		FSMEl=document.createElement('INPUT');
+		FSMEl.type="checkbox";
+		registerEl=document.createElement('INPUT');
+		registerEl.type="submit";
+		
+		alert("Пожалуйста, подтвердите данные");
+		
+		FIO=prompt("Ваше ФИО?");
+		nameEl.value=FIO;
+		
+		OL1.append(nameEl);
+		
+		OL1.append(document.createElement('br'));
+		
+		sex=prompt("Ваш пол? Мужской/Женский");
+		if(sex=="Мужской") {selectOption1.selected=true; selectOption2.selected=false;}
+		else if(sex=="Женский") {selectOption2.selected=true; selectOption1.selected=false;}
+		
+		OL1.append(sEl);
+		sEl.append(selectOption1);
+		sEl.append(selectOption2);
+		
+		OL1.append(document.createElement('br'));
+		
+		email=prompt("Ваша почта?");
+		emailEl.value=email;
+		
+		OL1.append(emailEl);
+		
+		OL1.append(document.createElement('br'));
+		
+		FSM=prompt("Вы поклоняетесь Летающему Макаронному монстру? да/нет");
+		if(FSM=="да")
+			FSMEl.checked=true;
+		else if(FSM=="нет")
+			FSMEl.checked=false;
+			
+		OL1.append(FSMEl);
+		
+		OL1.append(document.createElement('br'));
+		
+		OL1.append(registerEl);
+		
+		conf=confirm("Данные введены верно?");
+		if(!conf)
+		{
+			c=confirm("Изменить ФИО?");
+			if(c) FIO=prompt("Ваше ФИО?");
+			nameEl.value=FIO;
+			
+			c=confirm("Изменить пол?");
+			if(c) sex=prompt("Ваш пол? Мужской/Женский");
+			if(sex=="Мужской") {selectOption1.selected=true; selectOption2.selected=false;}
+			else if(sex=="Женский") {selectOption2.selected=true; selectOption1.selected=false;}
+			
+			c=confirm("Изменить почту?");
+			if(c) email=prompt("Ваша почта?");
+			emailEl.value=email;
+			
+			c=confirm("Изменить веру в Летающего Макаронного Монстра?");
+			if(c) FSM=prompt("Вы поклоняетесь Летающему Макаронному монстру? да/нет");
+			if(FSM=="да") FSMEl.checked=true;
+			else if(FSM=="нет") FSMEl.checked=false;
+			
+		}
+	</script>
+</body>
+
+</HTML>
